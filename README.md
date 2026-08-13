@@ -48,6 +48,11 @@ jupyter lab peptide_detectability_bigru.ipynb
 Run the cells top to bottom. Data is streamed from Hugging Face, so an internet connection
 is required on first run.
 
+> **Tip:** Training is much faster on a GPU. The recurrent (GRU) layers are the bottleneck —
+> on CPU each epoch takes several minutes, whereas a CUDA-enabled GPU is typically an order of
+> magnitude faster. Check that one is visible with `tf.config.list_physical_devices('GPU')`
+> before training.
+
 ## Outputs
 
 - `peptide_alldata_model_weights_detectability.*` — best model weights (by val accuracy)
