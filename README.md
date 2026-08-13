@@ -1,4 +1,4 @@
-# Peptide Detectability Prediction (BiLSTM–CNN)
+# Peptide Detectability Prediction (Bidirectional GRU)
 
 A deep learning model that predicts whether a peptide is **detectable by mass spectrometry**
 directly from its amino-acid sequence. This is framed as a binary classification task
@@ -6,22 +6,22 @@ directly from its amino-acid sequence. This is framed as a binary classification
 
 ## Model architecture
 
-A **Bidirectional LSTM + 1D-CNN** hybrid:
+Two stacked **Bidirectional GRU** layers (encoder → decoder):
 
 ```
 Input (40 × 21 one-hot)
       │
-   Masking            (ignore zero-padding)
+   Masking                        (ignore zero-padding)
       │
-BiLSTM(128, return_sequences)   ← context in both directions
+BiGRU(64, return_sequences)       ← context in both directions
       │
-Conv1D(64, kernel=3)            ← local sequence motifs
+BiGRU(64)                         ← collapse to a sequence vector
       │
 Dropout → Flatten
       │
 Dense(128, ReLU) → Dropout
       │
-Dense(1, sigmoid)              ← detectability probability
+Dense(1, sigmoid)                 ← detectability probability
 ```
 
 ## Data
