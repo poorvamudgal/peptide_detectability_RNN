@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# R / Quarto source (not part of this repo)
+.Rhistory
+.Renviron
+*.qmd
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.virtualenvs/
+venv/
+.venv/
+
+# Notebook checkpoints
+checkpoint
+
+# Generated figures (uncomment to keep them out of the repo)
+# *.png
